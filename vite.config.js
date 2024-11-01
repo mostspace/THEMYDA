@@ -1,36 +1,18 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
-import { visualizer } from 'rollup-plugin-visualizer';
-import svgr from '@svgr/rollup';
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises';
+import svgr from '@svgr/rollup';
 
 export default defineConfig({
   build: {
-    target: 'es2015', // Target ES2015 for wider browser support
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/')[1].split('/')[0].toString();
-          }
-        },
-      },
-    },
+    target: 'es2015', // Consider if you need a different target for broader compatibility
   },
   plugins: [
     react(),
-    viteCompression({
-      algorithm: 'gzip', // Use gzip compression by default
-    }),
-    visualizer({
-      filename: './dist/stats.html', // Output location for the report
-      open: false, // Automatically opens the visualizer after build
-      gzipSize: true, // Show gzip size
-      brotliSize: true, // Show brotli size
-    }), 
-    svgr(), // SVGR for using SVG as React components
+    viteCompression(),
+    svgr(),
   ],
   resolve: {
     alias: [
@@ -46,8 +28,8 @@ export default defineConfig({
   },
   esbuild: {
     loader: 'jsx',
-    include: /src\/.*\.[tj]sx?$/,
-    exclude: [],
+    include: /src\/.*\.[tj]sx?$/, // This is correct for handling .js and .jsx files
+    exclude: [], // Consider if there are files to exclude
   },
   optimizeDeps: {
     esbuildOptions: {
@@ -57,7 +39,7 @@ export default defineConfig({
           setup(build) {
             build.onLoad({ filter: /src\/.*\.js$/ }, async (args) => ({
               loader: 'jsx',
-              contents: await fs.promises.readFile(args.path, 'utf8'),
+              contents: await fs.readFile(args.path, 'utf8'),
             }));
           },
         },
@@ -65,10 +47,10 @@ export default defineConfig({
     },
   },
   server: {
-    host: '0.0.0.0',
-    port: 5173,
+    host: '0.0.0.0', // Allows access from local network
+    port: 5173, // Default port, consider keeping this consistent with preview
   },
   preview: {
-    port: 5173,
+    port: 5173, // Can be the same as server port for simplicity
   },
 });
