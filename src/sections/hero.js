@@ -4,8 +4,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import Iconify from 'src/components/iconify';
 import {hero1, hero2, heroObject} from 'src/assets';
 
-// --------------------------------------------------------------------------------------------------
-
 const Hero = ({theme}) => {
   return (
     <section className='w-full flex justify-center items-center relative'>

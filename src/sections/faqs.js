@@ -1,11 +1,7 @@
 import React, { useState, } from 'react'
+import { Typography, Grid, Stack, Button, Box, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { topics, faqs } from 'src/constants'
-import { Typography, Grid, Stack, Button, Box } from '@mui/material';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import { icChevronDown } from 'src/assets';
-import { faqIllustration } from '../assets';
+import { icChevronDown, faqIllustration } from 'src/assets';
 
 const Faqs = ({theme}) => {
     const [expanded, setExpanded] = useState({ '0-0': true });

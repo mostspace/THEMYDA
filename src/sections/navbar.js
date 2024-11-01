@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Box, Container, Grid, Drawer, IconButton, styled, Button, Divider } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
+import { Box, Container, Grid, Drawer, IconButton, styled, Button, Divider } from "@mui/material";
+import ThemeSwitch from "src/components/theme-switch";
 import { logo, logoDark } from "src/assets";
-import HamburgerIcon from 'src/assets/icons/HamburgerIcon';
 import { navLinks } from 'src/constants';
+import HamburgerIcon from 'src/assets/icons/HamburgerIcon';
 import styles from 'src/style';
-import ThemeSwitch from "../components/theme-switch";
 
-const Header = ({ theme, toggleTheme }) => {
+const Navbar = ({ theme, toggleTheme }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
@@ -176,7 +176,7 @@ const Header = ({ theme, toggleTheme }) => {
   );
 };
 
-export default Header;
+export default Navbar;
 
 const StyledImage = styled('img')(({ theme }) => ({
   width: '100%', 

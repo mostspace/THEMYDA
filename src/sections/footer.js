@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { logo, logoDark, icGlobal } from '../assets'
-import { footerLinks, socialMedia } from '../constants'
 import { Typography, Grid, Stack, Button, } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { footerLinks, socialMedia } from 'src/constants'
+import { logo, logoDark, icGlobal } from 'src/assets'
 
 const Footer = ({theme}) => {
   return (
