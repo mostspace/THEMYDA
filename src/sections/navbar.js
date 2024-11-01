@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Box, Container, Grid, Drawer, IconButton, styled, Button, Divider, Switch, FormControlLabel } from "@mui/material";
+import { Box, Container, Grid, Drawer, IconButton, styled, Button, Divider } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
-import { logo, logoDark, icSetting } from "src/assets";
+import { logo, logoDark } from "src/assets";
 import HamburgerIcon from 'src/assets/icons/HamburgerIcon';
 import { navLinks } from 'src/constants';
 import styles from 'src/style';
 import ThemeSwitch from "../components/theme-switch";
 
-// =====================================================================================================
-
-const Header = ({ theme, toggleTheme }) => {  // Destructure props correctly
+const Header = ({ theme, toggleTheme }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
@@ -38,7 +36,7 @@ const Header = ({ theme, toggleTheme }) => {  // Destructure props correctly
         sx={{
           width: 250,
           display: "flex",
-          flexDirection: 'column', // Corrected property
+          flexDirection: 'column',
           alignItems: "start",
           gap: "14px",
           padding: '30px 16px 15px 16px'
@@ -46,7 +44,7 @@ const Header = ({ theme, toggleTheme }) => {  // Destructure props correctly
       >
         <Button className="w-full uppercase bg-[#D1C4E9] text-[#651FFF] rounded-full px-[58px] py-[7px] text-[16px] font-montSemiBold">Login</Button>
         <Button className="w-full uppercase bg-[#D1C4E9] text-[#651FFF] rounded-full px-[58px] py-[7px] text-[16px] font-montSemiBold">Register</Button>
-        <ThemeSwitch toggleTheme={toggleTheme} theme={theme} /> {/* Pass theme prop */}
+        <ThemeSwitch toggleTheme={toggleTheme} theme={theme}/>
       </Box>
       <Divider />
       <Box
@@ -151,16 +149,7 @@ const Header = ({ theme, toggleTheme }) => {  // Destructure props correctly
                   <Button className="uppercase bg-transparent rounded-full px-[40px] py-[7px] text-[16px] font-mont" style={{ color: theme === 'light' ? 'black' : 'white' }}>Login</Button>
                   <Button className="uppercase bg-[#D1C4E9] text-[#651FFF] rounded-full px-[58px] py-[7px] text-[16px] font-montSemiBold">Register</Button>
                   <Divider className="w-[2px] h-[25px] bg-[#D8D8D8] opacity-30" />
-                  {/* <IconButton>
-                    <img
-                      src={icSetting}
-                      className="transition duration-300"
-                      style={{
-                        filter: theme === 'dark' ? 'invert(0)' : 'invert(1)', // Adjust filter for light/dark themes
-                      }}
-                    />
-                  </IconButton> */}
-                  <ThemeSwitch toggleTheme={toggleTheme} theme={theme} /> {/* Pass theme prop */}
+                  <ThemeSwitch toggleTheme={toggleTheme} theme={theme} />
                 </Box>
               </Grid>
               <Grid item xs={6} sx={{ 
@@ -176,7 +165,6 @@ const Header = ({ theme, toggleTheme }) => {  // Destructure props correctly
         </div>
       </div>
 
-      {/* Drawer component */}
       <Drawer
         anchor="left"
         open={drawerOpen}

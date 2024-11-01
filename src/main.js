@@ -5,7 +5,7 @@ import ThemeProvider from "src/theme";
 import './index.css';
 
 const MainApp = () => {
-  const [mode, setMode] = useState('dark'); // Initialize with light mode
+  const [mode, setMode] = useState('dark');
 
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === 'dark' ? 'light' : 'dark'));
